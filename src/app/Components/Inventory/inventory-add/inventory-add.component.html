@@ -1,0 +1,37 @@
+<div class="edit-item-container container mt-4">
+  <h2 class="form-title text-center mb-4">Add Inventory Item</h2>
+  <form class="edit-item-form" [formGroup]="addItems" (ngSubmit)="addItem()">
+    
+    <input type="text" formControlName="name" name="name" placeholder="Item Name" required class="form-control mb-3" />
+    @if(addItems.get('name')?.touched && addItems.get('name')?.invalid){
+      <p class="control-error text-danger">Enter a valid product name</p>
+    }
+
+    <input type="text" formControlName="description" name="description" placeholder="Description" class="form-control mb-3" />
+    @if(addItems.get('description')?.touched && addItems.get('description')?.invalid){
+      <p class="control-error text-danger">Description must have at least 10 characters</p>
+    }
+
+    <input type="number" formControlName="price" name="price" placeholder="Price" required class="form-control mb-3" />
+    @if(addItems.get('price')?.touched && addItems.get('price')?.invalid){
+      <p class="control-error text-danger">Enter a valid product price</p>
+    }
+
+    <input type="number" formControlName="quantity" name="quantity" placeholder="Quantity" required class="form-control mb-3" />
+    @if(addItems.get('quantity')?.touched && addItems.get('quantity')?.invalid){
+      <p class="control-error text-danger">Enter a valid product quantity</p>
+    }
+
+    <button type="submit" class="btn btn-primary">Add Item</button>
+  </form>
+
+  
+</div>
+
+
+  <div class="mt-3">
+    @if (successMessage) {
+      {{successMessage}}
+    }
+  </div>
+
